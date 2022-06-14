@@ -1,6 +1,7 @@
 package com.example.citylist;
 
 import static androidx.test.espresso.Espresso.onData;
+import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -75,5 +76,22 @@ public class MainActivityTest {
         onData(anything()).inAdapterView(withId(R.id.city_list)).atPosition(0).perform(click()); //Check the content on the list - no content in this case
         Espresso.pressBack(); //Back button
     }
+
+    @Test
+    public void listViewItemClickAndBack()
+    {
+        onView(withId(R.id.button_add)).perform(click());
+        onView(withId(R.id.editText_name)).perform(ViewActions.typeText("Edmonton"));
+        onView(withId(R.id.button_confirm)).perform(click());
+        onData(anything()).inAdapterView(withId(R.id.city_list)).atPosition(0).perform(click());
+
+        onView(withId(R.id.showActivity)).check(matches(isDisplayed()));
+        onView(withId(R.id.textView)).check(matches(withText("Edmonton")));
+        onView(withId(R.id.button)).perform(click());
+        onView(withId(R.id.mainActivity)).check(matches(isDisplayed()));
+        pressBack();
+
+    }
+
 
 }
