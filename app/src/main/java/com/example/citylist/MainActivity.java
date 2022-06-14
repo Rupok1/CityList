@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,ShowActivity.class);
                 intent.putExtra("city_name",dataList.get(i));
                 startActivity(intent);
+                finish();
             }
         });
 

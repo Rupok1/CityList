@@ -29,6 +29,7 @@ public class ShowActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ShowActivity.this,MainActivity.class));
+                finish();
             }
         });
 

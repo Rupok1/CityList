@@ -89,7 +89,7 @@ public class MainActivityTest {
         onView(withId(R.id.textView)).check(matches(withText("Edmonton")));
         onView(withId(R.id.button)).perform(click());
         onView(withId(R.id.mainActivity)).check(matches(isDisplayed()));
-        pressBack();
+       //  pressBack();
 
     }
 
